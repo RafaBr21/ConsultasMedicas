@@ -1,19 +1,26 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Consulta {
-
+    private int id;
     private Paciente paciente;
-    private Date dataConsulta;
-    private Date dataSolicitacao;
-    private Boolean realizada;
+    private LocalDate dataConsulta;
+    private boolean realizada;
 
-    public Consulta(Paciente paciente, Date dataConsulta, Date dataSolicitacao, Boolean realizada) {
+    public Consulta(int id, Paciente paciente, LocalDate dataConsulta) {
+        this.id = id;
         this.paciente = paciente;
         this.dataConsulta = dataConsulta;
-        this.dataSolicitacao = dataSolicitacao;
-        this.realizada = realizada;
+        this.realizada = false;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Paciente getPaciente() {
@@ -24,27 +31,25 @@ public class Consulta {
         this.paciente = paciente;
     }
 
-    public Date getDataConsulta() {
+    public LocalDate getDataConsulta() {
         return dataConsulta;
     }
 
-    public void setDataConsulta(Date dataConsulta) {
+    public void setDataConsulta(LocalDate dataConsulta) {
         this.dataConsulta = dataConsulta;
     }
 
-    public Date getDataSolicitacao() {
-        return dataSolicitacao;
-    }
-
-    public void setDataSolicitacao(Date dataSolicitacao) {
-        this.dataSolicitacao = dataSolicitacao;
-    }
-
-    public Boolean getRealizada() {
+    public boolean isRealizada() {
         return realizada;
     }
 
-    public void setRealizada(Boolean realizada) {
+    public void setRealizada(boolean realizada) {
         this.realizada = realizada;
+    }
+
+    @Override
+    public String toString() {
+        return "Consulta com " + paciente.getNome() + " em " + dataConsulta +
+                " - " + (realizada ? "Realizada" : "Pendente");
     }
 }
